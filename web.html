@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Sederhana — Halaman Utama</title>
+  <meta name="description" content="Contoh website responsif sederhana dengan HTML, CSS, dan JavaScript." />
+
+  <style>
+    :root{
+      --accent:#2563eb;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --radius:12px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#111;line-height:1.5}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px}
+    nav a:hover{background:rgba(37,99,235,0.08);color:var(--accent)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:34px 0}
+    .hero .card{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:0 6px 20px rgba(15,23,42,0.06)}
+    h1{font-size:clamp(1.6rem,2.6vw,2.4rem);margin:0 0 10px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+    .feature{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 3px 12px rgba(15,23,42,0.04)}
+    .feature h3{margin:6px 0 8px}
+    .feature p{margin:0;color:var(--muted);font-size:0.95rem}
+
+    /* Contact */
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea,button,select{font:inherit;padding:10px;border-radius:8px;border:1px solid #e6e9ef;background:transparent}
+    textarea{min-height:110px;resize:vertical}
+    button{background:var(--accent);color:white;border:0;padding:10px 14px;font-weight:600;cursor:pointer}
+    button[disabled]{opacity:0.6;cursor:not-allowed}
+
+    footer{margin:28px 0 80px;display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr)}
+      nav{display:none}
+      .mobile-toggle{display:inline-block}
+    }
+    @media (max-width:520px){
+      .features{grid-template-columns:1fr}
+    }
+
+    /* Mobile toggle button */
+    .mobile-toggle{display:none;border:0;background:transparent;font-size:18px;padding:8px}
+    .mobile-menu{display:none;background:var(--card);position:absolute;right:28px;top:74px;padding:10px;border-radius:10px;box-shadow:0 6px 25px rgba(2,6,23,0.12)}
+    .mobile-menu a{display:block;padding:8px 12px}
+
+    /* Small helpers */
+    .muted{color:var(--muted)}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(37,99,235,0.09);color:var(--accent);font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">WS</div>
+        <div>
+          <div style="font-weight:700">Website Sederhana</div>
+          <div class="muted" style="font-size:13px">Contoh project &middot; responsive</div>
+        </div>
+      </div>
+
+      <nav id="mainNav">
+        <a href="#home">Home</a>
+        <a href="#features">Fitur</a>
+        <a href="#about">Tentang</a>
+        <a href="#contact">Kontak</a>
+      </nav>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-expanded="false">☰</button>
+      <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="#home">Home</a>
+        <a href="#features">Fitur</a>
+        <a href="#about">Tentang</a>
+        <a href="#contact">Kontak</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="card">
+          <span class="chip">Baru</span>
+          <h1>Buat website yang bersih, cepat, dan responsif</h1>
+          <p class="lead">Template ini sudah termasuk navigasi mobile, bagian fitur, serta form kontak. Cocok untuk demo proyek, portofolio atau landing page sederhana.</p>
+          <p style="margin-top:18px">Mulai dengan mengubah teks, menambahkan gambar, atau sambungkan ke backend pilihanmu.</p>
+          <div style="margin-top:18px;display:flex;gap:10px">
+            <a href="#features" style="text-decoration:none"><button>Lihat Fitur</button></a>
+            <a href="#contact" style="text-decoration:none"><button style="background:transparent;color:var(--accent);border:1px solid rgba(37,99,235,0.12)">Hubungi Kami</button></a>
+          </div>
+        </div>
+
+        <aside style="padding:10px;">
+          <div style="background:linear-gradient(180deg,#fff,#f3f6fb);border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(15,23,42,0.04)">
+            <h3 style="margin:0 0 8px">Demo panel</h3>
+            <p class="muted" style="margin:0 0 12px">Ringkasan singkat fitur utama.</p>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>Desain responsif</li>
+              <li>Form kontak sederhana</li>
+              <li>Mudah disesuaikan</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features">
+        <h2 style="margin-bottom:12px">Fitur Utama</h2>
+        <div class="features">
+          <div class="feature">
+            <strong>Responsif</strong>
+            <h3>Tampil bagus di semua perangkat</h3>
+            <p>Grid dan media query sudah disiapkan supaya tampilan rapi di ponsel, tablet, dan desktop.</p>
+          </div>
+
+          <div class="feature">
+            <strong>Mudah dikustom</strong>
+            <h3>Ganti teks, warna, atau tata letak</h3>
+            <p>Semua style berada di dalam file ini — mudah untuk dimodifikasi jika kamu ingin menambahkan font atau framework lain.</p>
+          </div>
+
+          <div class="feature">
+            <strong>Interaktif</strong>
+            <h3>JavaScript ringan</h3>
+            <p>Navigasi mobile dan validasi form ditangani dengan sedikit JavaScript tanpa pustaka eksternal.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" style="margin-top:26px">
+        <h2>Tentang</h2>
+        <div style="display:flex;gap:18px;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px;background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 20px rgba(15,23,42,0.04)">
+            <h3>Siapa kami</h3>
+            <p class="muted">Ini adalah template contoh. Kamu bisa menggunakan kerangka ini sebagai starting point untuk proyek pribadi, tugas sekolah, atau landing page produk.</p>
+          </div>
+
+          <div style="flex:1;min-width:260px;background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 20px rgba(15,23,42,0.04)">
+            <h3>Teknologi</h3>
+            <p class="muted">HTML, CSS, dan JavaScript murni. Tidak perlu dependency — cukup buka file ini di browser.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:26px">
+        <h2>Kontak</h2>
+        <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start">
+          <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(15,23,42,0.04)">
+            <form id="contactForm" onsubmit="return handleSubmit(event)">
+              <label>Nama
+                <input type="text" id="name" placeholder="Nama kamu" required />
+              </label>
+
+              <label>Email
+                <input type="email" id="email" placeholder="email@contoh.com" required />
+              </label>
+
+              <label>Pesan
+                <textarea id="message" placeholder="Tulis pesanmu..." required></textarea>
+              </label>
+
+              <button type="submit" id="submitBtn">Kirim Pesan</button>
+              <div id="formMsg" style="margin-top:10px;color:var(--muted)"></div>
+            </form>
+          </div>
+
+          <aside style="background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(15,23,42,0.04)">
+            <h3>Informasi</h3>
+            <p class="muted">Alamat kantor (demo): Jalan Contoh No.1<br>Telepon: +62 812 3456 7890</p>
+            <div style="margin-top:12px">
+              <strong>Jam kerja</strong>
+              <p class="muted" style="margin:6px 0 0">Senin - Jumat, 09:00 - 17:00</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Website Sederhana</div>
+      <div class="muted">Dibuat dengan • HTML · CSS · JS</div>
+    </footer>
+  </div>
+
+  <script>
+    // Tanggal dinamis
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle mobile menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileToggle.addEventListener('click', ()=>{
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.style.display = expanded ? 'none' : 'block';
+      mobileMenu.setAttribute('aria-hidden', String(expanded));
+    });
+
+    // Simple form handling (demo-only)
+    function handleSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const msgEl = document.getElementById('formMsg');
+      const btn = document.getElementById('submitBtn');
+
+      if(!name || !email || !message){
+        msgEl.textContent = 'Harap lengkapi semua kolom.';
+        return false;
+      }
+
+      btn.disabled = true;
+      msgEl.textContent = 'Mengirim... (demo)';
+
+      // Simulate sending — in production, kirim ke server dengan fetch()
+      setTimeout(()=>{
+        msgEl.textContent = 'Terima kasih! Pesan Anda telah diterima (demo).';
+        btn.disabled = false;
+        document.getElementById('contactForm').reset();
+      }, 900);
+
+      return false;
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (ev)=>{
+      if(!mobileMenu.contains(ev.target) && !mobileToggle.contains(ev.target)){
+        mobileMenu.style.display = 'none';
+        mobileToggle.setAttribute('aria-expanded','false');
+        mobileMenu.setAttribute('aria-hidden','true');
+      }
+    });
+  </script>
+</body>
+</html>
